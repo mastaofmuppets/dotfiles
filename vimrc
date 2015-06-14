@@ -19,19 +19,6 @@ Plug 'altercation/vim-colors-solarized'
 
 Plug 'terryma/vim-expand-region'
 
-Plug 'Lokaltog/vim-easymotion'
-let g:EasyMotion_do_mapping = 0 " Disable default mappings
-let g:EasyMotion_smartcase = 1
-" easier moving to lines
-nmap s <Plug>(easymotion-s2)
-map <Leader>j <Plug>(easymotion-j)
-map <Leader>k <Plug>(easymotion-k)
-" search improvement
-map  / <Plug>(easymotion-sn)
-omap / <Plug>(easymotion-tn)
-map  n <Plug>(easymotion-next)
-map  N <Plug>(easymotion-prev)
-
 Plug 'ervandew/supertab'
 
 Plug 'bling/vim-airline'
