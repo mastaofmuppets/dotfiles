@@ -4,7 +4,7 @@ Run install to let the magic happen.
 Local additions can be added to these files:
 * `vim` : `~/.vimrc_local`
 * `tmux` : `~/.tmux_local.conf`
-*  git  :  ~/.gitconfig_local
+* `git` : `~/.gitconfig_local`
 
 ### Inspiration
 
