@@ -64,8 +64,7 @@ nmap <Leader><Leader> V
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
 
-nnoremap <CR> G
-nnoremap <BS> gg
+nnoremap <CR> o<Esc>
 nnoremap <Leader><Tab> <C-^>
 
 
