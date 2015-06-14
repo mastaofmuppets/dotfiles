@@ -74,6 +74,7 @@ nnoremap <Leader><Tab> <C-^>
 
 set mouse=a                             "Enable the mouse
 set number                              "Show line numbers
+set relativenumber
 
 set tabstop=4 shiftwidth=4 expandtab    "Tab settings (tabs as spaces)
 set list                                "Display whitespaces as characters
@@ -81,6 +82,24 @@ set list                                "Display whitespaces as characters
 set background=dark
 colorscheme solarized
 
+
+"---------------------
+" GUI options
+"---------------------
+
+if has('gui_running')
+    set guioptions-=T   " Menu options in gVim: no toolbar
+    set guioptions-=r   " no right scrollbar
+    set guioptions-=L   " no left scrollbar
+
+    set columns=80 lines=50
+
+    if has('gui_win32')
+        set guifont=consolas:h10
+    else
+        set guifont=DejaVu\ Sans\ Mono\ 10
+    endif
+endif
 
 "---------------------
 " Local customizations
