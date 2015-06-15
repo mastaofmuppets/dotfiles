@@ -22,16 +22,11 @@ Plug 'terryma/vim-expand-region'
 Plug 'ervandew/supertab'
 
 Plug 'bling/vim-airline'
-let g:airline_theme='solarized'
 let g:airline_left_sep=''
 let g:airline_right_sep=''
 
 " Navitate freely between tmux and vim
 Plug 'christoomey/vim-tmux-navigator'
-
-" Airline style of tmux status line
-" Plug 'edkolev/tmuxline.vim'
-" let g:tmuxline_powerline_separators = 0
 
 call plug#end()
 
