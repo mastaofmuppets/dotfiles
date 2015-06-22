@@ -99,7 +99,10 @@ call plug#end()
 " Colorscheme ------------------------------------------------------------ {{{
 
 set background=dark
-colorscheme solarized
+colorscheme badwolf
+
+" Toggle background highlighting
+map <F11> :let &background = ( &background == "dark"? "light" : "dark" )<CR>
 
 " }}}
 " GUI -------------------------------------------------------------------- {{{
