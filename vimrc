@@ -1,52 +1,31 @@
-"---------------------
-" Environment
-"---------------------
+" ----------------------------------------------------------------------------
+"          FILE: .vimrc
+"   DESCRIPTION: Vim configuration file
+"        AUTHOR: Pawel Dobrowolski
+" ----------------------------------------------------------------------------
 
-" On Windows, also use '.vim' instead of 'vimfiles'; this makes synchronization
-" across (heterogeneous) systems easier.
+" Environment ------------------------------------------------------------ {{{
+
+" On Windows, use '.vim' instead of 'vimfiles'
 if has('win32') || has('win64')
   set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
 endif
 
+" }}}
+" General settings ------------------------------------------------------- {{{
 
-" Select your Leader key
-let mapleader = "\<Space>"
+let mapleader = "\<Space>"              "Space is the leader. Take that!
 
+set mouse=a                             "Enable the mouse
 
-"---------------------
-" Plugins
-"---------------------
+set number                              "Show line numbers
+set relativenumber
 
-call plug#begin('~/.vim/plugged')
+set tabstop=4 shiftwidth=4 expandtab    "Tab settings (tabs as spaces)
+set list                                "Display whitespaces as characters
 
-Plug 'tpope/vim-sensible'
-
-Plug 'tpope/vim-fugitive'
-
-Plug 'kien/ctrlp.vim'
-
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-map <leader>d :execute 'NERDTreeToggle ' .getcwd()<CR>
-
-Plug 'altercation/vim-colors-solarized'
-
-Plug 'terryma/vim-expand-region'
-
-Plug 'ervandew/supertab'
-
-Plug 'bling/vim-airline'
-let g:airline_left_sep=''
-let g:airline_right_sep=''
-
-" Navitate freely between tmux and vim
-Plug 'christoomey/vim-tmux-navigator'
-
-call plug#end()
-
-
-"---------------------
-" Mappings
-"---------------------
+" }}}
+" General mappings ------------------------------------------------------- {{{
 
 nnoremap <Leader>o :CtrlP<CR>
 nnoremap <Leader>i :CtrlPBuffer<CR>
@@ -75,32 +54,62 @@ vmap <C-v> <Plug>(expand_region_shrink)
 nnoremap <CR> o<Esc>
 nnoremap <Leader><Tab> <C-^>
 
+noremap <leader>ev :execute 'e ' . resolve(expand($MYVIMRC))<CR>
 
-"---------------------
-" Settings
-"---------------------
 
-set mouse=a                             "Enable the mouse
-set number                              "Show line numbers
-set relativenumber
+" }}}
+" Folding ---------------------------------------------------------------- {{{
+"
+set foldenable
+set foldmethod=marker
 
-set tabstop=4 shiftwidth=4 expandtab    "Tab settings (tabs as spaces)
-set list                                "Display whitespaces as characters
+" Focus the current fold.
+nnoremap <Leader>z zMzvzz
+
+" }}}
+" Plugins ---------------------------------------------------------------- {{{
+
+call plug#begin('~/.vim/plugged')
+
+Plug 'tpope/vim-sensible'
+
+Plug 'tpope/vim-fugitive'
+
+Plug 'kien/ctrlp.vim'
+
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+map <leader>d :execute 'NERDTreeToggle ' .getcwd()<CR>
+
+Plug 'altercation/vim-colors-solarized'
+
+Plug 'terryma/vim-expand-region'
+
+Plug 'ervandew/supertab'
+
+Plug 'bling/vim-airline'
+let g:airline_left_sep=''
+let g:airline_right_sep=''
+
+" Navitate freely between tmux and vim
+Plug 'christoomey/vim-tmux-navigator'
+
+call plug#end()
+
+" }}}
+" Colorscheme ------------------------------------------------------------ {{{
 
 set background=dark
 colorscheme solarized
 
-
-"---------------------
-" GUI options
-"---------------------
+" }}}
+" GUI -------------------------------------------------------------------- {{{
 
 if has('gui_running')
     set guioptions-=T   " Menu options in gVim: no toolbar
     set guioptions-=r   " no right scrollbar
     set guioptions-=L   " no left scrollbar
 
-    set columns=80 lines=50
+    set columns=90 lines=50
 
     if has('gui_win32')
         set guifont=consolas:h10
@@ -109,12 +118,13 @@ if has('gui_running')
     endif
 endif
 
-"---------------------
-" Local customizations
-"---------------------
+" }}}
+" Local customization ---------------------------------------------------- {{{
 
 " local customizations in ~/.vimrc_local
 let $LOCALFILE=expand("~/.vimrc_local")
 if filereadable($LOCALFILE)
 source $LOCALFILE
 endif
+
+" }}}
