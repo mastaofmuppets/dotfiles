@@ -1,3 +1,14 @@
+"---------------------
+" Environment
+"---------------------
+
+" On Windows, also use '.vim' instead of 'vimfiles'; this makes synchronization
+" across (heterogeneous) systems easier.
+if has('win32') || has('win64')
+  set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
+endif
+
+
 " Select your Leader key
 let mapleader = "\<Space>"
 
@@ -6,7 +17,7 @@ let mapleader = "\<Space>"
 " Plugins
 "---------------------
 
-call plug#begin()
+call plug#begin('~/.vim/plugged')
 
 Plug 'tpope/vim-sensible'
 
