@@ -1,3 +1,4 @@
+" vim: foldmethod=marker
 " ----------------------------------------------------------------------------
 "          FILE: .vimrc
 "   DESCRIPTION: Vim configuration file
@@ -8,7 +9,8 @@
 
 " On Windows, use '.vim' instead of 'vimfiles'
 if has('win32') || has('win64')
-  set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
+    set runtimepath=
+    \$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
 endif
 
 " }}}
@@ -54,14 +56,32 @@ vmap <C-v> <Plug>(expand_region_shrink)
 nnoremap <CR> o<Esc>
 nnoremap <Leader><Tab> <C-^>
 
+" edit vimrc
 noremap <leader>ev :execute 'e ' . resolve(expand($MYVIMRC))<CR>
 
+
+function! Preserve(command)
+  " Preparation: save last search, and cursor position.
+  let _s=@/
+  let l = line(".")
+  let c = col(".")
+  " Do the business:
+  execute a:command
+  " Clean up: restore previous search history, and cursor position
+  let @/=_s
+  call cursor(l, c)
+endfunction
+
+" remove trailing whitespaces
+nmap _$ :call Preserve("%s/\\s\\+$//e")<CR>
+" auto indent all file
+nmap _= :call Preserve("normal gg=G")<CR>
 
 " }}}
 " Folding ---------------------------------------------------------------- {{{
 "
 set foldenable
-set foldmethod=marker
+set foldmethod=syntax
 
 " Focus the current fold.
 nnoremap <Leader>z zMzvzz
